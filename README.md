@@ -19,3 +19,6 @@ Este projeto utiliza a placa **BitDogLab Raspberry Pi Pico W** para capturar a m
 - Navegador web para visualização da interface
 
 ---
+## 🚀 Funcionamento
+
+![Captura de tela 2025-04-08 011255](https://github.com/user-attachments/assets/69a1001a-8642-412b-a651-15d357fede89)
