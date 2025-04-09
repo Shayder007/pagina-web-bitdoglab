@@ -11,7 +11,7 @@
 #define WIFI_SSID "ZTE-2"
 #define WIFI_PASSWORD "shay241098"
 
-// Função para determinar a direção com base nos valores do joystick (girado 90°)
+// Função para determinar a direção com base nos valores do joystick 
 const char* direcao_joystick(uint16_t x, uint16_t y) {
     const int DEADZONE = 1000;
     int centro = 2048;
@@ -40,7 +40,7 @@ const char* direcao_joystick(uint16_t x, uint16_t y) {
     if (delta_x < -DEADZONE && delta_y < -DEADZONE)
         return "Sudoeste ↙️";
 
-    return "Indefinido ❓";
+    return "Nao identificado";
 }
 
 // Função de resposta para o cliente
@@ -52,20 +52,20 @@ static err_t tcp_server_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
         return ERR_OK;
     }
 
-    // Lê valores do joystick com eixo invertido
-    adc_select_input(1); // GPIO27 -> novo eixo X
+    // Lê valores do joystick 
+    adc_select_input(1); //eixo X
     uint16_t eixo_x = adc_read();
 
-    adc_select_input(0); // GPIO26 -> novo eixo Y
+    adc_select_input(0); // eixo Y
     uint16_t eixo_y = adc_read();
 
     const char* direcao = direcao_joystick(eixo_x, eixo_y);
 
-    // Leitura dos botões A e B (ativo em LOW)
+    // Leitura dos botões A e B 
     bool botao_a = !gpio_get(5);
     bool botao_b = !gpio_get(6);
 
-    // Gera resposta HTML bonitona
+    // Gera resposta HTML 
     char response[1024];
     snprintf(response, sizeof(response),
         "HTTP/1.1 200 OK\r\n"
@@ -89,8 +89,8 @@ static err_t tcp_server_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, er
         "<p style=\"color:#888\">F5 para atualizar a página para ler novamente.</p>"
         "</body></html>",
         eixo_x, eixo_y, direcao,
-        botao_a ? "on" : "off", botao_a ? "PRESSIONADO" : "SOLTO",
-        botao_b ? "on" : "off", botao_b ? "PRESSIONADO" : "SOLTO"
+        botao_a ? "on" : "off", botao_a ? "Pressionado" : "Nao pressionado",
+        botao_b ? "on" : "off", botao_b ? "Pressionado" : "Nao pressionado"
     );
 
     tcp_write(tpcb, response, strlen(response), TCP_WRITE_FLAG_COPY);
@@ -110,7 +110,7 @@ int main()
 {
     stdio_init_all();
 
-    // Inicializa ADC (para joystick)
+    // Inicializa ADC 
     adc_init();
     adc_gpio_init(26); // ADC0 - GPIO26
     adc_gpio_init(27); // ADC1 - GPIO27
