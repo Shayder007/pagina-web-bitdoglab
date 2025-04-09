@@ -19,8 +19,8 @@ Projeto desenvolvido para a placa **BitDogLab (Raspberry Pi Pico W)** que cria u
 ## 🧰 Tecnologias e bibliotecas
 
 - C com SDK da Raspberry Pi Pico
-- FreeRTOS + lwIP para rede
-- HTML + CSS embutido no código C
+- lwIP para rede
+- HTML embutido no código C
 - Wi-Fi (cyw43 driver)
 
 ---
