@@ -1,24 +1,80 @@
-Este projeto utiliza a placa **BitDogLab Raspberry Pi Pico W** para capturar a movimentação do joystick, detectar botões A e B e exibir tudo isso em uma interface web 🧭
+# 🔹 BitDogLab Web Joystick Dashboard
+
+Projeto desenvolvido para a placa **BitDogLab (Raspberry Pi Pico W)** que cria uma página web embarcada para monitorar em tempo real os dados do **joystick analógico** e dos **botões físicos A e B**.
+
+> Feito com muito café ☕, amor ❤️ e uns `#define` bem colocados.
+
+---
 
 ## 🚀 Funcionalidades
 
-- 🔄 Leitura em tempo real do joystick (eixos X e Y)
-- 🧭 Exibição da direção 
-- 🔘 Leitura dos botões A (GPIO 5) e B (GPIO 6)
-- 🌐 Servidor TCP rodando na própria placa
-- 🎨 Página HTML com fundo escuro, texto colorido
-- 🤖 Código em C puro usando o Pico SDK
+- 🌐 Servidor web embarcado rodando direto na placa
+- 🤹 Leitura dos eixos X e Y do joystick
+- 🤭 Cálculo da direção (ex: Norte, Sul, Nordeste...)
+- 🔘 Detecção de botões pressionados (A e B)
+- 🎨 Página estilizada no modo hacker (verde no preto)
 
 ---
 
-## 🛠️ Requisitos
+## 🧰 Tecnologias e bibliotecas
 
-- Placa **BitDogLab** com Raspberry Pi Pico W
-- Ambiente de desenvolvimento com **Pico SDK**
-- Acesso a uma rede Wi-Fi (2.4GHz)
-- Navegador web para visualização da interface
+- C com SDK da Raspberry Pi Pico
+- lwIP para rede
+- HTML embutido no código C
+- Wi-Fi (cyw43 driver)
 
 ---
-## 🚀 Funcionamento
 
-![Captura de tela 2025-04-08 011255](https://github.com/user-attachments/assets/69a1001a-8642-412b-a651-15d357fede89)
+## 🔌 Conexões
+
+| Componente | GPIO | Função |
+|------------|------|--------|
+| Joystick X | 27   | ADC1   |
+| Joystick Y | 26   | ADC0   |
+| Botão A    | 5    | Digital com pull-up |
+| Botão B    | 6    | Digital com pull-up |
+
+---
+
+## 📸 Captura de Tela (Exemplo)
+
+![Captura de tela 2025-04-09 104925](https://github.com/user-attachments/assets/f3dde21f-61c9-489c-9b1d-2e2d8d21de26)
+
+## 📲 Como usar
+
+1. Clone este repositório
+2. Compile com o SDK do Raspberry Pi Pico
+3. Configure seu Wi-Fi no código:
+   ```c
+   #define WIFI_SSID "SeuWiFi"
+   #define WIFI_PASSWORD "Senha123"
+   ```
+4. Flash na placa
+5. Veja o IP no terminal e acesse via navegador
+
+---
+
+## 💡 Melhorias Futuras
+
+- Atualização automática com WebSockets
+- API REST para integrar com outras aplicações
+- Integração com OLED ou LEDs para feedback visual
+
+---
+
+## 👨‍💻 Autor
+
+**Shayder Faustino do Nascimento**  
+Estudante de ADS - IFPI  
+Participante do projeto Embarca Tech  
+
+---
+
+## ⚠️ Aviso
+
+Este projeto é educacional. Use com responsabilidade e evite conectar a redes Wi-Fi públicas sem segurança.
+
+---
+## 🚀 (QUESTAO DESAFIO)
+- Rodar a pagina na nuvem
+https://drive.google.com/file/d/1rTRos_keHek2txZZZtisLTWkT_LGG4Ig/view?usp=sharing
