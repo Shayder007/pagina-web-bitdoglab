@@ -2,7 +2,7 @@
 
 Projeto desenvolvido para a placa **BitDogLab (Raspberry Pi Pico W)** que cria uma página web embarcada para monitorar em tempo real os dados do **joystick analógico** e dos **botões físicos A e B**.
 
-> Feito com muito café ☕, amor ❤️ e uns `#define` bem colocados.
+> Feito com muito café ☕
 
 ---
 
